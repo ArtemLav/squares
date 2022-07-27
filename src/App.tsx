@@ -14,10 +14,10 @@ import { Option, PaintedShape } from './types';
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const boardConfigs = useSelector(getBoardConfigsSelector);
+  const boardConfigs = useSelector(getBoardConfigsSelector); // Missed type for this config
 
-  const [load, setLoad] = useState(false);
-  const [boardSize, setBoardSize] = useState(0);
+  const [load, setLoad] = useState(false); // Missed type for this, also I would rather put this value in your store and read it from here
+  const [boardSize, setBoardSize] = useState(0); // Missed type, as you have only three available value, I would rather use enum with values
   const [activeShapes, setActiveShapes] = useState<PaintedShape[]>([]);
 
   const selectFormOptions = useMemo(() => {
@@ -56,6 +56,7 @@ const App = () => {
   );
 
   useEffect(() => {
+    // declare this outside and just call here
     const initialize = async () => {
       await dispatch(getBoardConfigs());
       setLoad(true);
