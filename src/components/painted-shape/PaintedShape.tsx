@@ -9,8 +9,9 @@ interface Props {
 }
 
 const PaintedShape = ({ row, col, onHover }: Props) => {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(false); // Missed type, but I would rather get this value from props and not store value for each cell
 
+  // You add listener to every separate cell but should add just one for entire board to improve perfamance
   const handleMouseEnter = () => {
     const newActive = !active;
     setActive(newActive);

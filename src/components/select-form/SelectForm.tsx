@@ -9,7 +9,8 @@ interface Props {
 }
 
 const SelectForm = ({ options = [], onSubmit }: Props) => {
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState(''); // Missed type
+
 
   const handleSubmit = () => {
     if (selectedOption.length) {
@@ -44,6 +45,8 @@ const SelectForm = ({ options = [], onSubmit }: Props) => {
           variant="outlined"
           color="info"
           onClick={(event) => {
+          //  I would rather remove this and add onSubmit listener to FormControl component
+          //  Also e.preventDefault() call from handleSubmit
             event.preventDefault();
             handleSubmit();
           }}

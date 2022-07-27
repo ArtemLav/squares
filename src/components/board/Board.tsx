@@ -18,6 +18,7 @@ const Board = ({ size, onPaintedShapeHover }: Props) => {
   return (
     <StyledBoard inputWidth={squareWidth} className="board">
       <TableContainer component={Paper}>
+        {/* I would rather make this table as separate component like Playground */}
         <Table sx={{ minWidth: 650 }}>
           <TableBody>
             {Array.from(Array(size)).map((_, rowIndex) => (
